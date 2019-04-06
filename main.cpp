@@ -6,6 +6,8 @@
 int main(int argc, char** argv)
 {
     Stack<int> s(11);
+    assert(s.Size()==11);
+
     s.Push(10);
     std::cout << s.Peek() << std::endl;
 
@@ -13,11 +15,14 @@ int main(int argc, char** argv)
         assert(s.Push(i));
     }
 
-    assert(s.Size()==11);
+    std::cout << "Len: " << s.Len() << std::endl;
+    assert(!s.Empty());
 
     for(int i = 0; i < s.Size(); i++) {
         std::cout << "ele: " << s.Pop() << std::endl;
     }
+
+    assert(s.Empty());
     
     return 0;
 }

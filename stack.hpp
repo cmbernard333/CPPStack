@@ -9,6 +9,7 @@ public:
   const T Peek() const;
   unsigned int Len() const;
   unsigned int Size() const;
+  bool Empty() const;
 
 private:
   T *_stack_head;

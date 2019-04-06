@@ -34,3 +34,7 @@ template <typename T> unsigned int Stack<T>::Len() const {
 template <typename T> unsigned int Stack<T>::Size() const {
   return _max;
 }
+
+template <typename T> bool Stack<T>::Empty() const {
+  return _index == 0;
+}
