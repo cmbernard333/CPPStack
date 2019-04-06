@@ -7,6 +7,7 @@ public:
   bool Push(const T ele);
   T Pop();
   const T Peek() const;
+  unsigned int Len() const;
   unsigned int Size() const;
 
 private:

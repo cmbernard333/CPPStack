@@ -14,7 +14,8 @@ template <typename T> bool Stack<T>::Push(const T ele) {
 
 template <typename T> T Stack<T>::Pop() {
   if (_index > 0) {
-    return _stack_head[_index--];
+    T ele = _stack_head[--_index];
+    return ele;
   }
   return T();
 }
@@ -26,6 +27,10 @@ template <typename T> const T Stack<T>::Peek() const {
   return T();
 }
 
-template <typename T> unsigned int Stack<T>::Size() const {
+template <typename T> unsigned int Stack<T>::Len() const {
   return &_stack_head[_index] - _stack_head;
+}
+
+template <typename T> unsigned int Stack<T>::Size() const {
+  return _max;
 }
