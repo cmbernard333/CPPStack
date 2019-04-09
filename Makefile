@@ -15,7 +15,7 @@ all: build
 
 .PHONY: build
 build: 
-	mkdir build
+	mkdir -p build
 	${CXX} -I ${INCLUDE_PATH} -o build/${TARGET} main.cpp
 
 .PHONY: clean
