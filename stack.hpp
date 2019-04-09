@@ -2,7 +2,7 @@
 
 #include <memory>
 
-template <class T, class Allocator = std::allocator<T>> class Stack {
+template <class T, class Allocator = std::allocator<T> > class Stack {
 public:
   typedef T value_type;
   typedef const value_type &const_reference;
@@ -22,7 +22,7 @@ public:
 
 private:
   T *_stack_head;
-  const Allocator& _alloc;
+  allocator_type _alloc;
   unsigned int _max;
   unsigned int _index;
 };
