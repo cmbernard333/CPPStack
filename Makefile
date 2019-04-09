@@ -5,7 +5,7 @@
 #----------------------------------------------------------------------------------------------------------------------
 
 CFLAGS=-ansi -pedantic -Wall
-CXX_FLAGS=-ansi -pedantic -Wall
+CXX_FLAGS=-ansi -pedantic -Wall -std=c++17
 CXX:=$(or ${CXX}, clang++)
 CC:=$(or ${CC}, clang)
 INCLUDE_PATH=.

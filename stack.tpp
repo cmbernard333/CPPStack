@@ -1,11 +1,21 @@
-template <typename T>
-Stack<T>::Stack(unsigned int size) : _max(size), _index(0) {
-  _stack_head = new T[size];
+#define DEFAULT_STACK_SIZE 10
+
+template <class T, class Allocator>
+Stack<T, Allocator>::Stack(unsigned int size) : _alloc(Allocator()), _max(size), _index(0) {
+  _stack_head = _alloc.allocate(size);
 }
 
-template <typename T> Stack<T>::~Stack() { delete[](_stack_head); }
+template <class T, class Allocator>
+Stack<T, Allocator>::Stack(const Allocator& alloc) : _alloc(alloc), _max(DEFAULT_STACK_SIZE), _index(0) {
+  _stack_head = _alloc.allocate(DEFAULT_STACK_SIZE);
+}
 
-template <typename T> bool Stack<T>::Push(const T ele) {
+template <class T, class Allocator> Stack<T, Allocator>::~Stack() {
+  _alloc.deallocate(_stack_head, _max);
+}
+
+template <class T, class Allocator>
+bool Stack<T, Allocator>::Push(const T &ele) {
   if (_index + 1 > _max) {
     return false;
   }
@@ -13,25 +23,25 @@ template <typename T> bool Stack<T>::Push(const T ele) {
   return true;
 }
 
-template <typename T> T Stack<T>::Pop() {
-  if (_index > 0) {
-    T ele = _stack_head[--_index];
-    return ele;
-  }
-  return T();
+template <class T, class Allocator> T &Stack<T, Allocator>::Pop() {
+  T& ele = _stack_head[--_index];
+  return ele;
 }
 
-template <typename T> const T Stack<T>::Peek() const {
-  if (_index > 0) {
-    return _stack_head[_index - 1];
-  }
-  return T();
+template <class T, class Allocator> const T &Stack<T, Allocator>::Peek() const {
+  return _stack_head[_index - 1];
 }
 
-template <typename T> unsigned int Stack<T>::Len() const {
+template <class T, class Allocator>
+unsigned int Stack<T, Allocator>::Len() const {
   return &_stack_head[_index] - _stack_head;
 }
 
-template <typename T> unsigned int Stack<T>::Size() const { return _max; }
+template <class T, class Allocator>
+unsigned int Stack<T, Allocator>::Size() const {
+  return _max;
+}
 
-template <typename T> bool Stack<T>::Empty() const { return _index == 0; }
+template <class T, class Allocator> bool Stack<T, Allocator>::Empty() const {
+  return _index == 0;
+}
