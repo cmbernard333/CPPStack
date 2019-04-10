@@ -8,6 +8,7 @@ public:
   typedef const value_type &const_reference;
   typedef value_type &reference;
   typedef Allocator allocator_type;
+  typedef typename std::allocator_traits<Allocator>::pointer pointer;
 
   explicit Stack(unsigned int size);
   explicit Stack(const Allocator & = Allocator());
@@ -21,7 +22,7 @@ public:
   allocator_type GetAllocator() const;
 
 private:
-  T *_stack_head;
+  pointer _stack_head;
   allocator_type _alloc;
   unsigned int _max;
   unsigned int _index;
