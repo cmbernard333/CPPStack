@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
     assert(s.Push(i));
   }
 
-  std::cout << "Len: " << s.Len() << std::endl;
+  std::cout << "Len: " << s.Size() << std::endl;
   assert(!s.Empty());
 
   for (int i = 0; i < s.Size(); i++) {

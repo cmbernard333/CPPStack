@@ -33,12 +33,12 @@ template <class T, class Allocator> const T &Stack<T, Allocator>::Peek() const {
 }
 
 template <class T, class Allocator>
-unsigned int Stack<T, Allocator>::Len() const {
+unsigned int Stack<T, Allocator>::Size() const {
   return &_stack_head[_index] - _stack_head;
 }
 
 template <class T, class Allocator>
-unsigned int Stack<T, Allocator>::Size() const {
+unsigned int Stack<T, Allocator>::MaxSize() const {
   return _max;
 }
 
